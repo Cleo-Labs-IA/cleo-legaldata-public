@@ -1042,7 +1042,7 @@ export default function DocsPage() {
               <p className="mt-4 text-sm text-c-text-muted">
                 {T.authGetKey[lang]}{" "}
                 <Link
-                  href="/pricing"
+                  href="/general"
                   className="font-medium text-c-brand underline-offset-2 hover:underline"
                 >
                   {T.navGetKey[lang]} →
@@ -1373,7 +1373,7 @@ function verify(rawBody, header, secret) {
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Link
-                  href="/pricing"
+                  href="/general"
                   className="inline-flex items-center gap-2 rounded-lg bg-c-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-c-brand-ink"
                 >
                   {T.navGetKey[lang]} →

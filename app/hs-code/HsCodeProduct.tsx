@@ -54,9 +54,6 @@ export default function HsCodeProduct({ faq, useCases }: { faq: FaqItem[]; useCa
             <Link href="/playground" className="btn btn-primary">
               {fr ? "Essayer dans le playground" : "Try in the playground"} →
             </Link>
-            <Link href="/pricing" className="btn btn-secondary">
-              {fr ? "Voir les tarifs" : "See pricing"} →
-            </Link>
           </div>
         </section>
 

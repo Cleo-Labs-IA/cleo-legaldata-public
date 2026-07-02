@@ -108,7 +108,7 @@ const JSONLD = {
         lowPrice: "100",
         highPrice: "999",
         offerCount: 4,
-        url: "https://legaldata-public.cleolabs.co/pricing",
+        url: "https://legaldata-public.cleolabs.co/general",
       },
     },
     {

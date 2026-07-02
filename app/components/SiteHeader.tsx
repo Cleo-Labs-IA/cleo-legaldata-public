@@ -65,7 +65,6 @@ export default function SiteHeader({ lang, setLang, active = null }: Props) {
             <ProductsDropdown lang={lang} active={productActive} activeKey={active} />
             <NavLink href="/playground" label={STRINGS.navPlayground[lang]} />
             <NavLink href="/docs" label={STRINGS.navDocs[lang]} />
-            <NavLink href="/pricing" label={STRINGS.navPricing[lang]} />
           </div>
 
           {/* Right side */}

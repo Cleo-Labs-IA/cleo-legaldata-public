@@ -507,65 +507,6 @@ export default function HomeChooser() {
           </div>
         </section>
 
-        {/* ── 4. PRICING TEASER ── */}
-        <section className="mt-16 rounded-3xl border border-c-border bg-c-surface p-8 md:p-12">
-          <div className="text-center">
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-c-border bg-c-surface-2 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-c-text-muted">
-              {t("pricingEyebrow")}
-            </div>
-            <h2 className="t-h1">
-              {t("pricingTitle")}
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-[15px] leading-relaxed text-c-text-muted">
-              {t("pricingSub")}
-            </p>
-          </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <PricingTier
-              name="Light"
-              price={lang === "fr" ? "100 € /mois" : "€100 /mo"}
-              tagline={lang === "fr" ? "1k vérifs ou 100k req" : "1k checks or 100k req"}
-              href="/pricing#light"
-              cta={lang === "fr" ? "Get Light" : "Get Light"}
-            />
-            <PricingTier
-              name="Pro"
-              price={lang === "fr" ? "349 € /mois" : "€349 /mo"}
-              tagline={lang === "fr" ? "10k vérifs ou 1M req" : "10k checks or 1M req"}
-              featured
-              href="/pricing#pro"
-              cta={lang === "fr" ? "Get Pro" : "Get Pro"}
-            />
-            <PricingTier
-              name="Business"
-              price={lang === "fr" ? "999 € /mois" : "€999 /mo"}
-              tagline={lang === "fr" ? "50k vérifs ou 5M req" : "50k checks or 5M req"}
-              href="/pricing#business"
-              cta={lang === "fr" ? "Get Business" : "Get Business"}
-            />
-            <PricingTier
-              name="Enterprise"
-              price={lang === "fr" ? "Sur devis" : "Custom"}
-              tagline={lang === "fr" ? "Volumes illimités · SLA" : "Unlimited · SLA"}
-              href="/pricing#enterprise"
-              cta={lang === "fr" ? "Contact" : "Contact"}
-            />
-          </div>
-
-          <p className="mt-6 text-center text-[13px] text-c-text-muted">
-            {lang === "fr"
-              ? "Vous voulez tester sans payer ? Le "
-              : "Want to try before paying? The "}
-            <Link href="/playground" className="font-semibold text-c-brand hover:underline">
-              {lang === "fr" ? "Playground" : "Playground"}
-            </Link>
-            {lang === "fr"
-              ? " est gratuit, aucune clé nécessaire."
-              : " is free, no API key needed."}
-          </p>
-        </section>
-
         {/* ── 5. TRUST BADGES ── */}
         <section className="mt-16">
           <h2 className="text-center t-h2">
@@ -610,10 +551,6 @@ export default function HomeChooser() {
                 {STRINGS.navDocs[lang]}
               </Link>
               <span>·</span>
-              <Link href="/pricing" className="text-c-text-muted hover:text-c-brand">
-                {STRINGS.navPricing[lang]}
-              </Link>
-              <span>·</span>
               <Link href="/privacy" className="text-c-text-muted hover:text-c-brand">
                 {STRINGS.privacyLink[lang]}
               </Link>
@@ -650,50 +587,6 @@ function Step({ n, title, body }: { n: number; title: string; body: string }) {
       <h4 className="font-display text-lg font-medium text-c-text">{title}</h4>
       <p className="mt-2 text-[13.5px] leading-relaxed text-c-text-muted">{body}</p>
     </div>
-  );
-}
-
-function PricingTier({
-  name,
-  price,
-  tagline,
-  featured,
-  href,
-  cta,
-}: {
-  name: string;
-  price: string;
-  tagline: string;
-  featured?: boolean;
-  href: string;
-  cta: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`group flex flex-col rounded-2xl p-5 text-center transition-all ${
-        featured
-          ? "border-2 border-c-brand bg-c-brand-soft/30 hover:shadow-md"
-          : "border border-c-border bg-c-surface hover:border-c-brand hover:shadow-sm"
-      }`}
-    >
-      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-c-text-subtle">
-        {name}
-      </div>
-      <div className="mt-2 font-display text-xl font-medium tabular-nums text-c-text">
-        {price}
-      </div>
-      <div className="mt-2 text-[11px] leading-tight text-c-text-muted">{tagline}</div>
-      <div
-        className={`mt-3 inline-flex items-center justify-center gap-1 rounded-full px-3 py-1 text-[11px] font-semibold ${
-          featured
-            ? "bg-c-brand text-white"
-            : "bg-c-surface-2 text-c-text group-hover:bg-c-brand group-hover:text-white"
-        }`}
-      >
-        {cta} →
-      </div>
-    </Link>
   );
 }
 
