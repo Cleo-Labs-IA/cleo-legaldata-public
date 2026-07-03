@@ -52,6 +52,8 @@ const QUERIES = {
     'domaines', count(distinct domaine_autorite),
     'rss_rows', count(*) filter (where rss_feed is not null),
     'capture_pct', round(100.0*count(*) filter (where rss_feed is not null)/count(*),1)::float,
+    'regs_with_rss', count(distinct reglementation) filter (where rss_feed is not null),
+    'capture_regs_pct', round(100.0*count(distinct reglementation) filter (where rss_feed is not null)/count(distinct reglementation),1)::float,
     'hs6_with_rss', count(distinct hs6) filter (where rss_feed is not null),
     'marches_with_rss', count(distinct marche) filter (where rss_feed is not null),
     'as_of', to_char(now() at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"')

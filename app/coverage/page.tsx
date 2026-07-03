@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 const URL = "https://legaldata-public.cleolabs.co/coverage";
 const TITLE = `Monitoring Coverage Atlas — ${fmt(NUMBERS.complyAuthorities, "en")} authorities across ${NUMBERS.complyMarkets} markets | Cleo`;
-const DESC = `Live map of the product → HS code → regulation → authority chain: ${fmt(NUMBERS.complyHs6, "en")} HS6 product codes, ${fmt(NUMBERS.complyRegs, "en")} regulations and ${fmt(NUMBERS.complyAuthorities, "en")} enforcement authorities across ${NUMBERS.complyMarkets} markets, with ${NUMBERS.complyCapturePct}% under live monitoring. See exactly what Cleo captures — and where the blind spots are.`;
+const DESC = `Live map of the product → HS code → regulation → authority chain: ${fmt(NUMBERS.complyHs6, "en")} HS6 product codes, ${fmt(NUMBERS.complyRegs, "en")} regulations and ${fmt(NUMBERS.complyAuthorities, "en")} enforcement authorities across ${NUMBERS.complyMarkets} markets, with ${NUMBERS.complyCapturePct}% of regulations under live monitoring. See exactly what Cleo captures — and where the blind spots are.`;
 
 export const metadata: Metadata = {
   title: TITLE,

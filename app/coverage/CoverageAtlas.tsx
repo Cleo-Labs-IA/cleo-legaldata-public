@@ -38,6 +38,7 @@ const T = {
   kAuth: { en: "enforcement authorities", fr: "autorités de contrôle" },
   kMarkets: { en: "markets", fr: "marchés" },
   kCapture: { en: "live-monitored", fr: "veille live" },
+  kCaptureRegs: { en: "regulations live-monitored", fr: "régs sous veille live" },
   scopeNote: {
     en: "Scope: Cleo Comply product-monitoring graph, keyed by HS code.",
     fr: "Périmètre : graphe de veille produit Cleo Comply, indexé par code SH.",
@@ -178,9 +179,9 @@ export default function CoverageAtlas({ data }: { data: CoverageData }) {
           <Kpi value={totals.autorites.toLocaleString()} label={tr("kAuth", lang)} />
           <Kpi value={totals.marches.toLocaleString()} label={tr("kMarkets", lang)} />
           <Kpi
-            value={`${totals.capture_pct}%`}
-            label={tr("kCapture", lang)}
-            accent={`${Math.round(totals.rss_rows / 1000)}k / ${Math.round(totals.rows / 1000)}k`}
+            value={`${totals.capture_regs_pct}%`}
+            label={tr("kCaptureRegs", lang)}
+            accent={`${totals.regs_with_rss.toLocaleString()} / ${totals.regs.toLocaleString()}`}
           />
         </section>
         <p className="mt-3 text-[11px] text-c-text-subtle">{tr("scopeNote", lang)}</p>

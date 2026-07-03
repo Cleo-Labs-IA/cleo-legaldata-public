@@ -22,6 +22,8 @@ export interface CoverageTotals {
   domaines: number;
   rss_rows: number;
   capture_pct: number;
+  regs_with_rss: number;
+  capture_regs_pct: number;
   hs6_with_rss: number;
   marches_with_rss: number;
   as_of: string;
