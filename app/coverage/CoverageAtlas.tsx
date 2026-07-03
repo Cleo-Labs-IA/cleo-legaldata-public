@@ -449,7 +449,7 @@ function DetailPanel({
           </div>
           <div className="mt-1 text-[11px] text-c-text-subtle">
             {tiers.high} / {totals.marches}{" "}
-            {lang === "fr" ? "marchés ≥ 40 % surveillés" : "markets ≥40% monitored"}
+            {lang === "fr" ? "marchés ≥ 30 % surveillés" : "markets ≥30% monitored"}
           </div>
           {/* market tier breakdown bar */}
           <div className="mt-3 flex h-2.5 overflow-hidden rounded-full">
