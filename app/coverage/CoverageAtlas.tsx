@@ -37,7 +37,7 @@ const T = {
   kRegs: { en: "regulations mapped", fr: "réglementations mappées" },
   kAuth: { en: "enforcement authorities", fr: "autorités de contrôle" },
   kMarkets: { en: "markets", fr: "marchés" },
-  kCapture: { en: "live-monitored", fr: "veille live" },
+  kCapture: { en: "of mappings live-monitored", fr: "des mappings sous veille live" },
   kCaptureRegs: { en: "regulations live-monitored", fr: "régs sous veille live" },
   scopeNote: {
     en: "Scope: Cleo Comply product-monitoring graph, keyed by HS code. Live-capture % is computed on consumer-product (retail) regulations — industrial regime mappings (customs, export control, REACH…) are inventoried but not yet feed-monitored.",
