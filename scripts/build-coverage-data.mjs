@@ -51,9 +51,10 @@ const QUERIES = {
     'autorites', count(distinct autorite),
     'domaines', count(distinct domaine_autorite),
     'rss_rows', count(*) filter (where rss_feed is not null),
-    'capture_pct', round(100.0*count(*) filter (where rss_feed is not null)/count(*),1)::float,
+    'capture_pct', round(100.0*count(*) filter (where rss_feed is not null)/nullif(count(*) filter (where tier='retail'),0),1)::float,
+    'regs_retail', count(distinct reglementation) filter (where tier='retail'),
     'regs_with_rss', count(distinct reglementation) filter (where rss_feed is not null),
-    'capture_regs_pct', round(100.0*count(distinct reglementation) filter (where rss_feed is not null)/count(distinct reglementation),1)::float,
+    'capture_regs_pct', round(100.0*count(distinct reglementation) filter (where rss_feed is not null)/nullif(count(distinct reglementation) filter (where tier='retail'),0),1)::float,
     'hs6_with_rss', count(distinct hs6) filter (where rss_feed is not null),
     'marches_with_rss', count(distinct marche) filter (where rss_feed is not null),
     'as_of', to_char(now() at time zone 'UTC','YYYY-MM-DD"T"HH24:MI:SS"Z"')
@@ -62,18 +63,18 @@ const QUERIES = {
   "coverage-markets.json": `select coalesce(json_agg(t order by t.r desc),'[]') from (
     select marche c, count(*) r, count(distinct hs6) h, count(distinct reglementation) g,
       count(distinct autorite) a, count(*) filter (where rss_feed is not null) s,
-      round(100.0*count(*) filter (where rss_feed is not null)/count(*),1)::float p
+      coalesce(round(100.0*count(*) filter (where rss_feed is not null)/nullif(count(*) filter (where tier='retail'),0),1),0)::float p
     from mv_produit_hs_reg_autorite group by marche) t;`,
 
   "coverage-archetypes.json": `select coalesce(json_agg(t order by t.h desc),'[]') from (
     select famille f, archetype k, count(distinct hs6) h, count(distinct reglementation) g,
       count(distinct autorite) a, count(distinct marche) m,
-      round(100.0*count(*) filter (where rss_feed is not null)/count(*),1)::float p
+      coalesce(round(100.0*count(*) filter (where rss_feed is not null)/nullif(count(*) filter (where tier='retail'),0),1),0)::float p
     from mv_produit_hs_reg_autorite where archetype is not null group by famille, archetype) t;`,
 
   "coverage-matrix.json": `select coalesce(json_agg(t),'[]') from (
     select archetype k, marche c, count(*) r, count(distinct reglementation) g, count(distinct autorite) a,
-      round(100.0*count(*) filter (where rss_feed is not null)/count(*),1)::float p
+      coalesce(round(100.0*count(*) filter (where rss_feed is not null)/nullif(count(*) filter (where tier='retail'),0),1),0)::float p
     from mv_produit_hs_reg_autorite where archetype is not null group by archetype, marche) t;`,
 
   "coverage-authorities.json": `select coalesce(json_agg(t order by t.g desc),'[]') from (

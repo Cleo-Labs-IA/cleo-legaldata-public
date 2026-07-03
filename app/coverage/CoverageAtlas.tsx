@@ -40,8 +40,8 @@ const T = {
   kCapture: { en: "live-monitored", fr: "veille live" },
   kCaptureRegs: { en: "regulations live-monitored", fr: "régs sous veille live" },
   scopeNote: {
-    en: "Scope: Cleo Comply product-monitoring graph, keyed by HS code.",
-    fr: "Périmètre : graphe de veille produit Cleo Comply, indexé par code SH.",
+    en: "Scope: Cleo Comply product-monitoring graph, keyed by HS code. Live-capture % is computed on consumer-product (retail) regulations — industrial regime mappings (customs, export control, REACH…) are inventoried but not yet feed-monitored.",
+    fr: "Périmètre : graphe de veille produit Cleo Comply, indexé par code SH. Le % de capture live est calculé sur les réglementations produits de consommation (retail) — les mappings de régimes industriels (douane, export control, REACH…) sont inventoriés mais pas encore suivis par flux.",
   },
   mapTitle: { en: "Live monitoring by market", fr: "Veille live par marché" },
   mapHint: {
@@ -181,7 +181,7 @@ export default function CoverageAtlas({ data }: { data: CoverageData }) {
           <Kpi
             value={`${totals.capture_regs_pct}%`}
             label={tr("kCaptureRegs", lang)}
-            accent={`${totals.regs_with_rss.toLocaleString()} / ${totals.regs.toLocaleString()}`}
+            accent={`${totals.regs_with_rss.toLocaleString()} / ${totals.regs_retail.toLocaleString()}`}
           />
         </section>
         <p className="mt-3 text-[11px] text-c-text-subtle">{tr("scopeNote", lang)}</p>

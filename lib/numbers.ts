@@ -54,7 +54,7 @@ export const NUMBERS = {
   complyRegs: 11_295, // distinct regulations in the product graph
   complyAuthorities: 3_080, // distinct enforcement authorities
   complyMarkets: 156, // markets (countries + trade blocs)
-  complyCapturePct: 54, // % of REGULATIONS with a live monitoring feed (6,112/11,295 — per-reg, not per-mapping)
+  complyCapturePct: 57, // % of retail-scope REGULATIONS with a live monitoring feed (6,112/10,723)
 } as const;
 
 /* ─── formatters ─── */
