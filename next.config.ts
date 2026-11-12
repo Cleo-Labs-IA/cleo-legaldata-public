@@ -12,7 +12,11 @@ const config: NextConfig = {
      at /legal-data-static/_next/… on THIS domain too, so the standalone site
      keeps working. Next 16 needs no extra static-asset rewrite (docs: the
      beforeFiles rule is only required < Next 15). */
-  assetPrefix: "/legal-data-static",
+  /* 12/11/2026: legaldata-public.cleolabs.co now serves the paid portal, so the
+     /legal-data zone no longer reaches this app. cleolabs.co/atlas is proxied
+     here (cleo-landing rewrites /atlas and /atlas-static/* to this project's
+     production URL); the prefix must match that rewrite. */
+  assetPrefix: "/atlas-static",
   async redirects() {
     // /products retired — funnel to the new /coverage atlas (preserves SEO).
     return [
