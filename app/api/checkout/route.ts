@@ -15,15 +15,15 @@ export const dynamic = "force-dynamic";
  * provisions the API key after payment.
  *
  * Failure modes (all redirect to a safe fallback so the button never 404s):
- *   - STRIPE_SECRET_KEY missing  → /pricing on this site
- *   - Price ID missing for plan  → /pricing on this site
- *   - Stripe API error           → /pricing on this site with error flag
+ *   - STRIPE_SECRET_KEY missing  → /general on this site
+ *   - Price ID missing for plan  → /general on this site
+ *   - Stripe API error           → /general on this site with error flag
  */
 export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const plan = (url.searchParams.get("plan") || "pro") as Plan;
   const cadence = (url.searchParams.get("cadence") || "monthly") as Cadence;
-  const fallback = new URL("/pricing", url.origin);
+  const fallback = new URL("/general", url.origin);
 
   const stripe = getStripe();
   if (!stripe) {
@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
   try {
     const successUrl =
       "https://cleo-legal-public.vercel.app/dashboard/billing?checkout=success";
-    const cancelUrl = `${url.origin}/pricing?checkout=cancel`;
+    const cancelUrl = `${url.origin}/general?checkout=cancel`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",

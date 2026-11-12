@@ -50,7 +50,7 @@ function formatNumber(n: number, lang: Lang): string {
   return n.toLocaleString(lang === "fr" ? "fr-FR" : "en-US");
 }
 
-export default function Dashboard({ data }: { data: DashboardData }) {
+export default function Dashboard({ data, isolated = false }: { data: DashboardData; isolated?: boolean }) {
   const [lang, setLang] = useState<Lang>("en");
   const [drawer, setDrawer] = useState<string | null>(null);
   const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
@@ -79,7 +79,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
 
   return (
     <div className="min-h-screen pb-16">
-      <SiteHeader lang={lang} setLang={setLang} active="atlas" />
+      {isolated ? null : <SiteHeader lang={lang} setLang={setLang} active="atlas" />}
 
       <main className="mx-auto max-w-7xl px-6 pt-6">
         {/* Compact intro: title + 3 KPIs (live, real, no double-counting) */}
@@ -180,7 +180,7 @@ export default function Dashboard({ data }: { data: DashboardData }) {
           onCountrySelect={setDrawer}
         />
 
-        <ApiCallout lang={lang} />
+        {isolated ? null : <ApiCallout lang={lang} />}
 
         <footer className="mt-12 border-t border-c-border pt-6 text-xs text-c-text-subtle">
           <div className="flex flex-wrap items-center justify-between gap-3">

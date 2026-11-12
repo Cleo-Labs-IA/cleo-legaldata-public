@@ -64,7 +64,7 @@ const FAQ = [
   },
   {
     q: "How does pricing work?",
-    a: "Same five-tier pricing across all three atlases (Legal, Product Physical, HS Code): Light €100/mo, Pro €349/mo, Business €999/mo, Enterprise custom, plus the free Playground. Pay-as-you-go via Stripe, no commitment.",
+    a: "Five tiers across all three atlases (Legal, Product Physical, HS Code), plus the free Playground. Billed via Stripe, pay-as-you-go, no commitment — contact us for current plans and volumes.",
   },
 ];
 
@@ -84,7 +84,7 @@ const JSONLD = {
         lowPrice: "100",
         highPrice: "999",
         offerCount: 4,
-        url: "https://legaldata-public.cleolabs.co/pricing",
+        url: "https://legaldata-public.cleolabs.co/general",
       },
     },
     {

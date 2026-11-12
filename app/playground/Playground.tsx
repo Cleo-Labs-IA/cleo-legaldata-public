@@ -777,13 +777,6 @@ export default function Playground() {
               {T.sub[lang]}
             </p>
           </div>
-          {/* PRIMARY CTA — see pricing without leaving */}
-          <Link
-            href="/pricing"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-c-brand px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-c-brand-ink hover:shadow-md"
-          >
-            {lang === "fr" ? "Voir les tarifs" : "See pricing"} →
-          </Link>
         </section>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-[320px_1fr]">
@@ -1105,10 +1098,6 @@ export default function Playground() {
               <span>·</span>
               <Link href="/docs" className="text-c-text-muted hover:text-c-brand">
                 {STRINGS.navDocs[lang]}
-              </Link>
-              <span>·</span>
-              <Link href="/pricing" className="text-c-text-muted hover:text-c-brand">
-                {STRINGS.navPricing[lang]}
               </Link>
             </span>
           </div>

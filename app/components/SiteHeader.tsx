@@ -12,7 +12,7 @@ const MEET_URL = URLS.MEET;
 interface Props {
   lang: Lang;
   setLang: (lang: Lang) => void;
-  active?: "atlas" | "atlas-product" | "atlas-hs" | "legal-api" | null;
+  active?: "atlas" | "atlas-product" | "atlas-hs" | "atlas-coverage" | "legal-api" | null;
 }
 
 /**
@@ -32,7 +32,10 @@ interface Props {
  */
 export default function SiteHeader({ lang, setLang, active = null }: Props) {
   const productActive =
-    active === "atlas" || active === "atlas-product" || active === "atlas-hs";
+    active === "atlas" ||
+    active === "atlas-product" ||
+    active === "atlas-hs" ||
+    active === "atlas-coverage";
 
   return (
     <>
@@ -62,7 +65,6 @@ export default function SiteHeader({ lang, setLang, active = null }: Props) {
             <ProductsDropdown lang={lang} active={productActive} activeKey={active} />
             <NavLink href="/playground" label={STRINGS.navPlayground[lang]} />
             <NavLink href="/docs" label={STRINGS.navDocs[lang]} />
-            <NavLink href="/pricing" label={STRINGS.navPricing[lang]} />
           </div>
 
           {/* Right side */}
@@ -192,17 +194,6 @@ function ProductsDropdown({
           active={activeKey === "atlas"}
         />
         <DropdownItem
-          href="/products"
-          icon={<IconBox />}
-          label={STRINGS.navProducts[lang]}
-          desc={
-            lang === "fr"
-              ? "46 031 régulations · 20 catégories · produits physiques"
-              : "46,031 regulations · 20 categories · physical products"
-          }
-          active={activeKey === "atlas-product"}
-        />
-        <DropdownItem
           href="/hs-code"
           icon={<IconCustoms />}
           label={STRINGS.navHsCode[lang]}
@@ -212,6 +203,17 @@ function ProductsDropdown({
               : "HS classification · duties · dual-use · sanctions"
           }
           active={activeKey === "atlas-hs"}
+        />
+        <DropdownItem
+          href="/coverage"
+          icon={<IconRadar />}
+          label={STRINGS.navCoverage[lang]}
+          desc={
+            lang === "fr"
+              ? "5 520 SH6 · 1 008 autorités · 139 marchés · veille live"
+              : "5,520 HS6 · 1,008 authorities · 139 markets · live monitoring"
+          }
+          active={activeKey === "atlas-coverage"}
         />
       </div>
     </details>
@@ -313,16 +315,6 @@ function IconScale() {
   );
 }
 
-function IconBox() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M12 22V12" />
-    </svg>
-  );
-}
-
 function IconCustoms() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -330,6 +322,17 @@ function IconCustoms() {
       <path d="M3 12h18" />
       <path d="M12 3a14 14 0 0 1 0 18" />
       <path d="M12 3a14 14 0 0 0 0 18" />
+    </svg>
+  );
+}
+
+function IconRadar() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M19.07 4.93A10 10 0 1 0 6.99 20.66" />
+      <path d="M12 12 7 7" />
+      <path d="M12 12a3 3 0 1 0 3 3" />
+      <circle cx="12" cy="12" r="0.5" fill="currentColor" />
     </svg>
   );
 }
